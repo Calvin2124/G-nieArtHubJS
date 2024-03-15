@@ -7,7 +7,7 @@ async function charger_data(){
         section.insertAdjacentHTML("beforeend", `
         <article>
             <img src="${element.image}" alt="${element.titre}">
-            <a href="product.html">Buy ${element.shorttitle}</a>
+            <a href="product.html?id=${element._id}">Buy ${element.shorttitle}</a>
         </article>`)
     }
 }
