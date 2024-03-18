@@ -17,18 +17,54 @@
         </div>
     </header>
     <main>
-        <section>
-            <h1>Votre panier</h1>
-            <div></div>
+        <section id="panier row">
+            <h1 class="title">Votre panier</h1>
             <article>
-                <img src="" alt="">
-                <h2></h2>
-                <p></p>
-                <p></p>
-                <p></p>
-                <input type="text">
+                <div class="trait"></div>
+                <div class="article">
+                    <img class="image_article" src="img/01.png" alt="">
+                    <h2 class="title2">Éclat Éthéré : Bird</h2>
+                    <p class="para">Format 40 x 30</p>
+                    <p class="para">35.25€</p>
+                    <p class="para">Quantité : <input type="number"></p>
+                    
+                    <p class="para supprimer">Supprimer</p>
+                </div>
+                <div class="div_commande">
+                    <h3 class="title3">Total de la commande</h3>
+                    <p class="para total">X articles pour un motant de X</p>
+                </div>
+                <div class="trait"></div>
             </article>
-
+        </section>
+        <section id="commande">
+            <h2 class="title">Formulaire de commande</h2>
+            <article>
+                <div class="trait"></div>
+                <form id="form" action="#">
+                    <div class="form_input">
+                        <label for="">Prénom :</label>
+                    <input type="text">
+                    </div>
+                    <div class="form_input">
+                        <label for="">Nom :</label>
+                    <input type="text">
+                    </div>
+                    <div class="form_input">
+                        <label for="">Adresse :</label>
+                    <input type="text">
+                    </div>
+                    <div class="form_input">
+                        <label for="">Ville :</label>
+                    <input type="text">
+                    </div>
+                    <div class="form_input">
+                        <label for="">Email :</label>
+                    <input type="mail">
+                    </div>
+                    <input type="submit">
+                </form>
+            </article>
         </section>
     </main>
     <footer>

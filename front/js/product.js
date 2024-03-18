@@ -56,16 +56,19 @@ function format(){
         }
     });
     input_quantity.addEventListener("input", () => {
-        let value = parseInt(input_quantity.value)
-
-        if (value < 1){
-            input_quantity.value = 1
-        } else if (value > 100) {
-            input_quantity.value = 100
-        }
-        sum_tab(value)
-    })
+        let value = input_quantity.value.trim(); // Supprime les espaces blancs avant et après la saisie
+        value = value.replace(/[^\d]/g, ''); // Supprime tous les caractères qui ne sont pas des chiffres
+        value = parseInt(value);
     
+        if (isNaN(value) || value < 1) {
+            input_quantity.value = 1;
+        } else if (value > 100) {
+            input_quantity.value = 100;
+        } else {
+            input_quantity.value = value;
+        }
+        // sum_tab(value)
+    });
 }
 function setDefaultPrice() {
     const price = document.querySelector(".showprice");

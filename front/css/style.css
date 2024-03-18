@@ -130,7 +130,6 @@ footer a {
     max-width: 1440px;
     height:auto;
     margin:41px auto 80px auto;
-   
 }
 .page header div {
     display: flex;
@@ -277,4 +276,95 @@ article > div > div.price > p {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+.title{
+    text-align: center;
+    font-family: 'Rum Raisin', sans-serif;
+    font-size: 36px;
+}
+
+.article{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.image_article{
+    width: 130px;
+}
+.title2{
+    font-family: 'Rum Raisin', sans-serif;
+    font-size: 36px;
+}
+
+.para{
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 32px;
+}
+
+.para input{
+    width: 50px;
+}
+
+.supprimer {
+    text-decoration: underline;
+}
+
+.title3{
+    font-family: 'Rum Raisin', sans-serif;
+    font-size: 36px;
+    text-align: end;
+}
+
+.total{
+    text-align: end;
+}
+
+.trait{
+    height: 2px;
+    width: 100%;
+    background: #EE7F43;
+    margin-bottom: 20px;
+    max-width: 1105px;
+    margin: 20px auto;
+}
+
+.div_commande{
+    margin-right: 135px;
+}
+
+#commande h2 {
+    margin-top: 100px;
+}
+
+#form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1100px;
+    margin: auto;
+    gap: 25px;
+}
+
+.form_input{
+    display: flex;
+    flex-direction: column;
+}
+
+#form > input[type=submit]{
+    grid-column: 1 / 3;
+    margin: 20px auto;
+    padding: 4px 60px;
+    font-family: 'Source Sans 3', sans-serif;
+    background: #EE7F43;
+    color: #FFF;
+    font-weight: 700;
+    font-size: 32px;
+    border: 1px solid #EE7F43;
+}
+
+#form label{
+    font-size: 28px;
+    font-family: 'Source Sans 3', sans-serif;
 }
