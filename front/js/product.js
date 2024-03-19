@@ -33,7 +33,7 @@ function format(){
     const select = document.querySelector("#format")
     for (let i = 0; i < datas.declinaisons.length; i++){
         const data = datas.declinaisons[i]; 
-        const option = `<option data-index="${i}" value="${data.prix}">${data.taille}</option>`
+        const option = `<option data-index="${i}" value="${data.taille}">${data.taille}</option>`
         select.insertAdjacentHTML("beforeend", option)
         // data-index pour récupérer l'index
         
@@ -96,3 +96,51 @@ const price = document.querySelector(".showprice");
 const input_quantity = document.querySelector("#quantity")
 
 charger_datas()
+
+const buy_button = document.querySelector(".button-buy")
+// buy_button.addEventListener("click", (e) => {
+//     e.preventDefault()
+//     let quantity = input_quantity.value
+//     console.log(quantity)
+// })
+
+/*
+Au clique sur le bouton buy_button, on récupère la quantité, l'image et l'id dans l'url pour les envoyer dans le local storage.
+pour chaque format mettre une limite de 100, si le produit est deja dans le panier on ajoute la quantité quand l'utilisateur dépasse 100 mettre un message d'erreur
+*/
+buy_button.addEventListener("click", (e) => {
+    e.preventDefault()
+    let quantity = input_quantity.value
+    let image = datas.image
+    let id = datas._id
+    let format = document.querySelector("#format").value
+    let product = {
+        id,
+        image,
+        quantity,
+        format
+    }
+    let panier = JSON.parse(localStorage.getItem("panier"))
+    if (panier === null){
+        panier = []
+    }
+    let index = panier.findIndex((element) => element.id === id && element.format === format)
+    if (index === -1){
+        panier.push(product)
+    } else {
+        let new_quantity = parseInt(panier[index].quantity) + parseInt(quantity)
+        if (new_quantity > 100){
+            alert("Vous ne pouvez pas acheter plus de 100 exemplaires d'une même oeuvre")
+            return
+        }
+        panier[index].quantity = new_quantity
+    }
+    localStorage.setItem("panier", JSON.stringify(panier))
+    let price = document.querySelector(".price")
+    let new_p = document.createElement("p")
+    new_p.innerText = "Produit ajouté au panier"
+    price.insertAdjacentElement("afterend", new_p)
+})
+
+
+
