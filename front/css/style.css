@@ -289,7 +289,8 @@ article > div > div.price > p {
     align-items: center;
     justify-content: center;
     gap: 25px;
-    margin-bottom: 25px;
+    max-width: 1105px;
+    margin: auto auto 50px auto;
 }
 
 .image_article{
@@ -373,4 +374,16 @@ article > div > div.price > p {
 #form input{
     font-size: 28px;
     font-family: 'Source Sans 3', sans-serif;
+}
+
+#test{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.para-supprimer{
+    cursor: pointer;
+    font-size: 24px;
+    color: rgba(161, 7, 7, 0.716);
+    text-decoration: underline;
 }

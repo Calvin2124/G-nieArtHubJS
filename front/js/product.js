@@ -112,10 +112,14 @@ buy_button.addEventListener("click", (e) => {
     e.preventDefault()
     let quantity = input_quantity.value
     let image = datas.image
+    let title = datas.titre
     let id = datas._id
+    let data_index = document.querySelector("#format").selectedIndex
     let format = document.querySelector("#format").value
     let product = {
         id,
+        data_index,
+        title,
         image,
         quantity,
         format
