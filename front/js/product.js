@@ -38,9 +38,7 @@ function format(){
         // data-index pour récupérer l'index
         
     }
-
     // Ajouter un écouteur d'événements "change" à l'élément <select>
-    
     select.addEventListener("change", () => {
         // Obtenez l'index de l'option sélectionnée
         let selectedIndex = select.selectedIndex;
@@ -98,12 +96,6 @@ const input_quantity = document.querySelector("#quantity")
 charger_datas()
 
 const buy_button = document.querySelector(".button-buy")
-// buy_button.addEventListener("click", (e) => {
-//     e.preventDefault()
-//     let quantity = input_quantity.value
-//     console.log(quantity)
-// })
-
 /*
 Au clique sur le bouton buy_button, on récupère la quantité, l'image et l'id dans l'url pour les envoyer dans le local storage.
 pour chaque format mettre une limite de 100, si le produit est deja dans le panier on ajoute la quantité quand l'utilisateur dépasse 100 mettre un message d'erreur
@@ -145,6 +137,3 @@ buy_button.addEventListener("click", (e) => {
     new_p.innerText = "Produit ajouté au panier"
     price.insertAdjacentElement("afterend", new_p)
 })
-
-
-
