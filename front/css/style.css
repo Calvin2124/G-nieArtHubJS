@@ -320,8 +320,10 @@ article > div > div.price > p {
     text-align: end;
 }
 
-.total{
+.para_total{
     text-align: end;
+    font-size: 32px;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .trait{

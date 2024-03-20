@@ -5,6 +5,7 @@ async function charger_datas(){
     chargement_panier()
     delete_item()
     calcul_total()
+    changement_input()
 }
 charger_datas()
 
@@ -50,8 +51,45 @@ function delete_item(){
 function calcul_total(){
     const div = document.querySelectorAll(".article");
     const input = document.querySelectorAll("input");
+    let total_input = 0
+    let total_prix = 0
     for (let i = 0; i < div.length; i++){
+        // récupère la quantité de chaque article
         let valeur_input = input[i].value;
+        //récupère le prix de chaque article
         let prix = div[i].querySelector(".test_prix").innerText;
+        let total = valeur_input * prix;
+        total_prix += total
+        // récupération de la quantité 
+        total_input += parseInt(valeur_input)
+    }
+    const para_total = document.querySelector(".para_total");
+    if (total_input === 0){
+        para_total.textContent = `Total : 0.00 € pour 0 article`;
+        return
+    } else if (total_input === 1){
+        para_total.textContent = `Total : ${total_prix.toFixed(2)} € pour ${total_input} article`;
+        return
+    } else if (total_input > 1){
+        para_total.textContent = `Total : ${total_prix.toFixed(2)} € pour ${total_input} articles`;
+    }
+}
+
+function changement_input(){
+    const para_input = document.querySelectorAll(".para input");
+    for (let i = 0; i < para_input.length; i++) {
+        para_input[i].addEventListener("input", () => { // Remove the 'index' parameter from the arrow function
+            let local_storage = localStorage.getItem('panier');
+            let data_local = JSON.parse(local_storage);
+            data_local[i].quantity = para_input[i].value; // Access 'i' directly instead of using 'index'
+            localStorage.setItem('panier', JSON.stringify(data_local));
+            if (para_input[i].value < 0){
+                para_input[i].value = 1
+            } else if (para_input[i].value > 100){
+                para_input[i].value = 100
+            }
+            calcul_total();
+            
+        });
     }
 }
