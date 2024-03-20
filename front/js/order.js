@@ -6,6 +6,7 @@ async function charger_datas(){
     delete_item()
     calcul_total()
     changement_input()
+    user_data()
 }
 charger_datas()
 
@@ -89,7 +90,41 @@ function changement_input(){
                 para_input[i].value = 100
             }
             calcul_total();
-            
         });
     }
+}
+
+function user_data(){
+    const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ -]{3,}$/;
+    const regexVille = /^[a-zA-Z]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const send = document.querySelector("#form > input[type=submit]");
+    send.addEventListener("click", (e) => {
+        e.preventDefault();
+        const name = document.querySelector("#name").value;
+        const adresse = document.querySelector("#adresse").value;
+        const ville = document.querySelector("#ville").value;
+        const firstname = document.querySelector("#firstname").value;
+        if (firstname.length < 3 || !regex.test(firstname)){
+            alert("Veuillez entrer un prénom valide");
+            return
+        }
+        if (name.length < 3 || !regex.test(name)){
+            alert("Veuillez entrer un nom valide");
+            return
+        }
+        if (adresse.length < 10 || !regex.test(adresse)){
+            alert("Veuillez entrer une adresse valide");
+            return
+        }
+        if (ville.length < 3 || !regexVille.test(ville)){
+            alert("Veuillez entrer une ville valide");
+            return
+        }
+        if (!emailRegex.test(document.querySelector("#email").value)){
+            alert("Veuillez entrer un email valide");
+            return
+        }
+        console.log("ok")
+    })
 }

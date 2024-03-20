@@ -389,3 +389,12 @@ article > div > div.price > p {
     color: rgba(161, 7, 7, 0.716);
     text-decoration: underline;
 }
+
+#form > input[type=submit]{
+    cursor: pointer;
+}
+
+#form > input[type=submit]:hover{
+    background: #FFF;
+    color: #EE7F43;
+}

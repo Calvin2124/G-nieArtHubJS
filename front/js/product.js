@@ -133,7 +133,13 @@ buy_button.addEventListener("click", (e) => {
     }
     localStorage.setItem("panier", JSON.stringify(panier))
     let price = document.querySelector(".price")
-    let new_p = document.createElement("p")
-    new_p.innerText = "Produit ajouté au panier"
-    price.insertAdjacentElement("afterend", new_p)
+    // Créer un paragraphe pour afficher "Produit ajouté au panier" qui reste 5 secondes
+    const paragraph = document.createElement("p");
+    paragraph.textContent = "Produit ajouté au panier";
+    paragraph.style.color = "green";    
+    price.insertAdjacentElement("afterend", paragraph);
+    setTimeout(() => {
+        paragraph.remove();
+    }, 3000);
 })
+
