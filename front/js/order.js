@@ -8,12 +8,15 @@ async function charger_datas(){
     changement_input()
     user_data()
 }
+const panier = JSON.parse(localStorage.getItem("panier")) || [];
+if (panier.length === 0){
+    document.querySelector("#zzz").innerText = "Ton panier est vide Nardine !"
+}
 charger_datas()
 
 function chargement_panier(){
     // Récupérer la valeur associée à la clé spécifique du local storage
     let local_storage = localStorage.getItem('panier');
-
     // Convertir la chaîne JSON en un tableau JavaScript
     let data_local = JSON.parse(local_storage);
 
@@ -45,7 +48,6 @@ function delete_item(){
             let data_local = JSON.parse(local_storage);
             data_local.splice(i, 1);
             localStorage.setItem('panier', JSON.stringify(data_local));
-            number_item();
             window.location.reload();
         });
     }
@@ -85,7 +87,6 @@ function changement_input(){
             let data_local = JSON.parse(local_storage);
             data_local[i].quantity = para_input[i].value; // Access 'i' directly instead of using 'index'
             localStorage.setItem('panier', JSON.stringify(data_local));
-            number_item();
             if (para_input[i].value < 0){
                 para_input[i].value = 1
             } else if (para_input[i].value > 100){
@@ -100,7 +101,7 @@ function user_data(){
     const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ -]{3,}$/;
     const regexVille = /^[a-zA-Z]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const send = document.querySelector("#form > input[type=submit]");
+    const send = document.querySelector("#user_command");
     send.addEventListener("click", (e) => {
         e.preventDefault();
         const name = document.querySelector("#name").value;
@@ -127,5 +128,33 @@ function user_data(){
             alert("Veuillez entrer un email valide");
             return
         }
+        envoie()
     })
+}
+
+// Une fonction asynchrone qui permet d'envoyer les données au serveur
+async function envoie() {
+    let tableau_user = {
+        firstName : document.querySelector("#firstname").value,
+        lastName : document.querySelector("#name").value,
+        address : document.querySelector("#adresse").value,
+        city : document.querySelector("#ville").value,
+        email : document.querySelector("#email").value, 
+    }
+    const product = []
+    // On parcours le panier et on récupère les id des produits 
+    panier.forEach(item => {
+        product.push(item.id)
+    });
+
+    // On envoie les données au seveur 
+    let response = await fetch("http://localhost:3000/api/products/order", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({contact: tableau_user, products: product})
+    });
+    let data = await response.json();
+    alert("Votre commande a bien été enregistrée" + "\n" + "Votre numéro de commande est : " + data.orderId);
 }
