@@ -45,6 +45,7 @@ function delete_item(){
             let data_local = JSON.parse(local_storage);
             data_local.splice(i, 1);
             localStorage.setItem('panier', JSON.stringify(data_local));
+            number_item();
             window.location.reload();
         });
     }
@@ -84,6 +85,7 @@ function changement_input(){
             let data_local = JSON.parse(local_storage);
             data_local[i].quantity = para_input[i].value; // Access 'i' directly instead of using 'index'
             localStorage.setItem('panier', JSON.stringify(data_local));
+            number_item();
             if (para_input[i].value < 0){
                 para_input[i].value = 1
             } else if (para_input[i].value > 100){
@@ -125,6 +127,5 @@ function user_data(){
             alert("Veuillez entrer un email valide");
             return
         }
-        console.log("ok")
     })
 }

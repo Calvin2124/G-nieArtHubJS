@@ -132,6 +132,7 @@ buy_button.addEventListener("click", (e) => {
         panier[index].quantity = new_quantity
     }
     localStorage.setItem("panier", JSON.stringify(panier))
+    number_item();
     let price = document.querySelector(".price")
     // Créer un paragraphe pour afficher "Produit ajouté au panier" qui reste 5 secondes
     const paragraph = document.createElement("p");
